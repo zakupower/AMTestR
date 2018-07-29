@@ -1,0 +1,69 @@
+.roundButtonQuestion {
+    -fx-background-radius: 3em;
+    -fx-min-width: 25px;
+    -fx-min-height: 25px;
+    -fx-max-height: 25px;
+    -fx-max-width: 25px;
+    -fx-background-color: #dd0b0b;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-insets: 0,0,0,0,0;
+
+}
+.roundButtonQuestion:hover {
+    -fx-background-radius: 3em;
+    -fx-min-width: 25px;
+    -fx-min-height: 25px;
+    -fx-max-height: 25px;
+    -fx-max-width: 25px;
+    -fx-background-color: rgba(255, 11, 11, 0.65);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-insets: 0,0,0,0,0;
+}
+.roundButtonQuestion:pressed {
+    -fx-background-radius: 3em;
+    -fx-min-width: 25px;
+    -fx-min-height: 25px;
+    -fx-max-height: 25px;
+    -fx-max-width: 25px;
+    -fx-background-color: rgba(255, 11, 11, 0.65);
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+    -fx-background-insets: 0,0,0,0,0;
+}
+.roundButtonAnswer {
+    -fx-background-radius: 3em;
+    -fx-min-width: 25px;
+    -fx-min-height: 25px;
+    -fx-max-height: 25px;
+    -fx-max-width: 25px;
+    -fx-background-color: #05ddf7;
+    -fx-font-weight: bold;
+    -fx-background-insets: 0,0,0,0,0;
+}
+.roundButtonAnswer:hover {
+    -fx-background-radius: 3em;
+    -fx-min-width: 25px;
+    -fx-min-height: 25px;
+    -fx-max-height: 25px;
+    -fx-max-width: 25px;
+    -fx-max-width: 25px;
+    -fx-background-color: rgb(79, 223, 255);
+    -fx-font-weight: bold;
+    -fx-background-insets: 0,0,0,0,0;
+}
+.roundButtonAnswer:pressed {
+    -fx-background-radius: 3em;
+    -fx-min-width: 25px;
+    -fx-min-height: 25px;
+    -fx-max-height: 25px;
+    -fx-max-width: 25px;
+    -fx-background-color: rgb(79, 223, 255);
+    -fx-font-weight: bold;
+    -fx-background-insets: 0,0,0,0,0;
+    -fx-text-fill: white;
+}
+.questionBox {
+    -fx-border-color: rgb(79, 223, 255);
+}

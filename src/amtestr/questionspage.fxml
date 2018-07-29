@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+
+
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.geometry.Insets?>
+<VBox spacing="10"  stylesheets="@questions.css" alignment="CENTER" fx:controller="amtestr.QuestionsPageController" maxHeight="800" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"  xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+    <Label text="Label" fx:id="testNameLabel">
+        <font>
+            <Font size="20.0" />
+        </font>
+    </Label>
+    <Label text="Label" fx:id="testAuthorLabel">
+        <font>
+            <Font name="System Italic" size="10.0" />
+        </font>
+    </Label>
+    <ScrollPane maxHeight="500" minWidth="450" style="-fx-background-color:transparent;">
+        <content>
+            <VBox minWidth="400" alignment="CENTER" spacing="10.0">
+                <children>
+
+                    <VBox alignment="CENTER" spacing="10.0" styleClass="questionBox">
+                        <children>
+                            <Label text="Въпрос:" />
+                            <HBox alignment="CENTER" spacing="10.0">
+                                <children>
+                                    <TextField fx:id="firstQuestionField" prefWidth="300" />
+                                    <TextField fx:id="firstQuestionPreferredField"  prefWidth="30"/>
+                                    <Button mnemonicParsing="false" text="X" styleClass="roundButtonQuestion" onAction="#deleteQuestion"></Button>
+                                </children>
+                            </HBox>
+                            <Separator prefWidth="200.0" />
+                            <Label text="Отговори:" />
+                            <HBox alignment="CENTER" layoutX="10.0" layoutY="27.0" spacing="10.0">
+                                <children>
+                                    <TextField fx:id="firstQuestionFirstAnswerField" prefWidth="300" />
+                                    <TextField fx:id="firstQuestionFirstAnswerPreferredField" prefWidth="30" />
+                                    <CheckBox mnemonicParsing="false" />
+                                    <Button mnemonicParsing="false" text="X" styleClass="roundButtonAnswer" onAction="#deleteAnswer"/>
+                                </children>
+                            </HBox>
+                            <Button mnemonicParsing="false" text="Добави отговор" onAction="#addAnswer"/>
+                        </children>
+                        <padding>
+                            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                        </padding>
+                    </VBox>
+                </children>
+                <Button text="Добави въпрос" onAction="#addQuestion"></Button>
+            </VBox>
+        </content>
+    </ScrollPane>
+    <Button text="Към точкуване" onAction="#toScoring"></Button>
+
+</VBox>
