@@ -1,17 +1,26 @@
 package amtestr;
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
+import javax.xml.soap.Text;
+import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class QuestionsPageController implements Initializable {
@@ -106,6 +115,47 @@ public class QuestionsPageController implements Initializable {
 
 
     public void toScoring(ActionEvent actionEvent) {
+        ScrollPane mainPane = (ScrollPane)((VBox)((Node)actionEvent.getSource()).getParent()).getChildren().get(2);
+        validateFields(mainPane);
+        addQuestionsToTest(mainPane);
+        try {
+            BorderPane root =Main.getRoot();
+            VBox pane = FXMLLoader.load(getClass().getResource("questionspage.fxml"));
+            root.setCenter(pane);
+            ((Stage)root.getScene().getWindow()).setHeight(700);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private void addQuestionsToTest(ScrollPane scrollPane){
+        System.out.println(scrollPane);
+        ObservableList<Node> questionNodes = (ObservableList<Node>)(((VBox)scrollPane.getContent()).getChildren());
+        for(Node questionNode: questionNodes) {
+            if(!(questionNode instanceof VBox)) continue;
+            VBox questionVBox = (VBox) questionNode;
+            HBox questionHBox = (HBox)questionVBox.getChildren().get(1);
+
+            TextField questionNameField = (TextField)questionHBox.getChildren().get(0);
+            TextField questionPreferredPosField = (TextField) questionHBox.getChildren().get(1);
+            String questionName = questionNameField.getText();
+            int preferredPos = questionPreferredPosField.getText().trim().isEmpty()?-1:Integer.parseInt(questionPreferredPosField.getText());
+
+            List<Answer> answers = new ArrayList<>();
+            for(int i = 4; i < questionVBox.getChildren().size()-1; i++) {
+                HBox currentHBox = (HBox) questionVBox.getChildren().get(i);
+                String answerName = ((TextField) currentHBox.getChildren().get(0)).getText();
+                String answerPrefferedPosString = ((TextField)currentHBox.getChildren().get(1)).getText();
+                int answerPreferredPos = answerPrefferedPosString.trim().isEmpty()?-1:Integer.parseInt(answerPrefferedPosString);
+                boolean isCorrect = ((CheckBox)currentHBox.getChildren().get(2)).isSelected();
+                answers.add(new Answer(answerName,answerPreferredPos,isCorrect));
+            }
+            Main.getTest().addQuestion(new Question(questionName,preferredPos,answers));
+        }
+        System.out.println(Main.getTest());
+    }
+    private void validateFields(ScrollPane scrollPane){
 
     }
 }

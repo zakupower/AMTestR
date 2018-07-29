@@ -13,12 +13,12 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.geometry.Insets?>
 <VBox spacing="10"  stylesheets="@questions.css" alignment="CENTER" fx:controller="amtestr.QuestionsPageController" maxHeight="800" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"  xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
-    <Label text="Label" fx:id="testNameLable">
+    <Label text="Label" fx:id="testNameLabel">
         <font>
             <Font size="20.0" />
         </font>
     </Label>
-    <Label text="Label" fx:id="testAuthorLable">
+    <Label text="Label" fx:id="testAuthorLabel">
         <font>
             <Font name="System Italic" size="10.0" />
         </font>
@@ -59,6 +59,6 @@
             </VBox>
         </content>
     </ScrollPane>
-    <Button text="Към точкуване"></Button>
+    <Button text="Към точкуване" onAction="#toScoring"></Button>
 
 </VBox>
